@@ -11,6 +11,7 @@ ylim([0 th+1]);
 set(gca,'XTick',0:1:x(end));
 xlabel('Hours of the day');
 ylabel('Speed [Mb/s]');
+legend('measures','theoretical');
 e.Marker = '.';
 e.MarkerSize = 30;
 e.CapSize = 15;
