@@ -16,7 +16,7 @@ Data will be collected in a file called `speedtest.json` in the same directory a
 
 ## Plot the average speed
 You can run the Matlab script `script.mlx` to plot the average internet speed versus the hours of the day. You can edit the script to set the theoretical download & upload speed as below:
-```
+```matlab
 % download theoretical speed
 th_download = 20;
 % upload theoretical speed
