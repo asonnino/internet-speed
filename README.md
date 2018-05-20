@@ -8,7 +8,7 @@ First, install [speedtest-cli](https://github.com/sivel/speedtest-cli) as descri
 ```
 $ chmod +x speedtest.sh
 ```
-Set a `cron` job to regularly trigger the script. For instance, if your script is located in `/root` and you want to trigger it hourly, you can set:
+Set a `cron` job to regularly trigger the script. For instance, if your script is located in `/root` and you want to trigger it hourly, you can add the following line to your crontab:
 ```
 @hourly bash /root/speedtest.sh
 ```
