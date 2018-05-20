@@ -4,7 +4,7 @@
 Automatically measure and plot average internet speed. 
 
 ## Install & Run
-First, install [speedtest-cli](https://github.com/sivel/speedtest-cli) as described [here](https://github.com/sivel/speedtest-cli#installation). Give appropriate permissions to the script `speedtest.sh`:
+First, install [speedtest-cli](https://github.com/sivel/speedtest-cli) as described [here](https://github.com/sivel/speedtest-cli#installation), and give appropriate permissions to the script `speedtest.sh`:
 ```
 $ chmod +x speedtest.sh
 ```
