@@ -12,9 +12,9 @@ Set a `cron` job to regularly trigger the script. For instance, if your script i
 ```
 @hourly bash /root/speedtest.sh
 ```
-Data will be collected in a file colled `speedtest.json` in the same directory.
+Data will be collected in a file called `speedtest.json` in the same directory as the script.
 
-## Plot
+## Plot the average speed
 You can run the Matlab script `script.mlx` to plot the average internet speed versus the hours of the day. You can edit the script to set the theoretical download & upload speed as below:
 ```
 % download theoretical speed
