@@ -1,7 +1,7 @@
 # internet-speed
 [![license](https://img.shields.io/badge/license-GPL3-brightgreen.svg)](https://github.com/asonnino/internet-speed/blob/master/LICENSE)
 
-Automatically measure and plot average internet speed. 
+Automatically measure and plot average speed of your internet connection. 
 
 ## Install & Run
 First, install [speedtest-cli](https://github.com/sivel/speedtest-cli) as described [here](https://github.com/sivel/speedtest-cli#installation), and give appropriate permissions to the script `speedtest.sh`:
