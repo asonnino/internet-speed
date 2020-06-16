@@ -22,8 +22,10 @@ FPS = 1
 # --- end config ---
 
 
-def plot(download, upload, file_name, image_folder):
+def plot(download, upload, file_name, image_folder, title=''):
     fig = plt.figure()
+
+    plt.title(title)
 
     hours = range(24)
     plt.plot(hours, download, label='Download speed')
@@ -67,7 +69,7 @@ def make_images(data_folder, image_folder):
                 download[hours] = download_speed
                 upload[hours] = upload_speed
 
-        plot(download, upload, 'speed_' + str(index), image_folder)
+        plot(download, upload, 'speed_' + str(index), image_folder, title=files[index])
 
 
 def make_video(image_folder, video_name, fps=1):
