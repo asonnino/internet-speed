@@ -18,14 +18,14 @@ TIME_FORMAT = '%Y-%m-%dT%H:%M:%S.%fZ'
 TMP_IMAGE_FOLDER = 'images'
 OUTPUT = 'speedtest.avi'
 FPS = 1
+FIG_DPI = 300
 
 # --- end config ---
 
 
-def plot(download, upload, file_name, image_folder, title=''):
-    fig = plt.figure()
-
-    plt.title(title)
+def plot(download, upload, file_name, image_folder, title='', dpi=100):
+    fig = plt.figure(dpi=dpi)
+    fig.suptitle(title)
 
     hours = range(24)
     plt.plot(hours, download, label='Download speed')
@@ -42,7 +42,7 @@ def plot(download, upload, file_name, image_folder, title=''):
     plt.close(fig)
 
 
-def make_images(data_folder, image_folder):
+def make_images(data_folder, image_folder, dpi=FIG_DPI):
     files = sorted([file for file in os.listdir(DATA_PATH) if file.endswith(".csv")])
 
     for index in range(len(files)):
@@ -69,7 +69,7 @@ def make_images(data_folder, image_folder):
                 download[hours] = download_speed
                 upload[hours] = upload_speed
 
-        plot(download, upload, 'speed_' + str(index), image_folder, title=files[index])
+        plot(download, upload, 'speed_' + str(index), image_folder, title=files[index], dpi=dpi)
 
 
 def make_video(image_folder, video_name, fps=1):
@@ -90,5 +90,5 @@ def make_video(image_folder, video_name, fps=1):
     cv2.destroyAllWindows()
     video.release()
 
-make_images(DATA_PATH, TMP_IMAGE_FOLDER)
+make_images(DATA_PATH, TMP_IMAGE_FOLDER, dpi=FIG_DPI)
 make_video(TMP_IMAGE_FOLDER, OUTPUT, fps=FPS)
