@@ -43,7 +43,8 @@ def plot(download, upload, file_name, image_folder, title='', dpi=100):
 
 
 def make_images(data_folder, image_folder, dpi=FIG_DPI):
-    files = sorted([file for file in os.listdir(DATA_PATH) if file.endswith(".csv")])
+    files = [file for file in os.listdir(DATA_PATH) if file.endswith(".csv")]
+    files.sort(key=lambda x: datetime.strptime('20' + x[0:-4], '%Y-%m-%d'))
 
     for index in range(len(files)):
         download = [0] * 24
@@ -69,12 +70,13 @@ def make_images(data_folder, image_folder, dpi=FIG_DPI):
                 download[hours] = download_speed
                 upload[hours] = upload_speed
 
-        plot(download, upload, 'speed_' + str(index), image_folder, title=files[index], dpi=dpi)
+        plot(download, upload, str(index), image_folder, title=files[index], dpi=dpi)
 
 
 def make_video(image_folder, video_name, fps=1):
     # Fetch images
-    images = sorted([img for img in os.listdir(image_folder) if img.endswith(".png")])
+    images = [img for img in os.listdir(image_folder) if img.endswith(".png")]
+    images.sort(key=lambda x: int(x[0:-4]))
     # Get image shape
     frame = cv2.imread(os.path.join(image_folder, images[0]))
     height, width, layers = frame.shape
