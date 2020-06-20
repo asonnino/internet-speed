@@ -2,6 +2,7 @@ import cv2
 import os
 import csv
 from datetime import datetime
+from dateutil import tz
 from matplotlib import pyplot as plt
 
 # --- start config ---
@@ -14,6 +15,8 @@ UPLOAD_ROW = 7
 
 DELIMITER = ','
 TIME_FORMAT = '%Y-%m-%dT%H:%M:%S.%fZ'
+FROM_TIMEZONE = tz.tzutc()
+TO_TIMEZONE = tz.tzlocal()
 
 TMP_IMAGE_FOLDER = 'images'
 OUTPUT = 'speedtest.avi'
@@ -63,7 +66,10 @@ def make_images(data_folder, image_folder, dpi=FIG_DPI):
                 assert upload_speed.replace('.', '', 1).isdigit()
                 upload_speed = float(upload_speed) / 1000000  # Mbps
                 try:
-                    hours = datetime.strptime(time, TIME_FORMAT).hour
+                    utc = datetime.strptime(time, TIME_FORMAT)
+                    utc = utc.replace(tzinfo=FROM_TIMEZONE)
+                    correct_timezone = utc.astimezone(TO_TIMEZONE)
+                    hours = correct_timezone.hour
                 except ValueError:
                     assert False
 
